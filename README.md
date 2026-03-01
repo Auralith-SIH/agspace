@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="assets/spacekit-logo.png" width="180" alt="SpaceKit Logo">
+   <img src="assets/agspace-logo.png" width="180" alt="AGSpace Logo">
 </p>
 
-<h1 align="center">SpaceKit 🚀</h1>
+<h1 align="center">AGSpace 🚀</h1>
 
 <p align="center">
   A lightweight, beginner-friendly Python toolkit for space-data analysis, astronomy calculations, and NASA/ISRO API integration.
@@ -11,7 +11,8 @@
 <p align="center">
   <img src="https://img.shields.io/badge/python-3.8+-blue.svg" />
   <img src="https://img.shields.io/badge/License-MIT-yellow.svg" />
-  <img src="https://img.shields.io/github/stars/Auralith-SIH/spacekit?style=social" />
+  <img src="https://img.shields.io/github/stars/Auralith-SIH/agspace?style=social" />
+  <img src="https://github.com/Auralith-SIH/agspace/actions/workflows/ci.yml/badge.svg" />
   <img src="https://img.shields.io/badge/Status-Active-success" />
   <img src="https://img.shields.io/badge/Maintained-Yes-green" />
 </p>
@@ -21,8 +22,8 @@
 ## 🧾 Authorship & Ownership
 
 - **Maintainer / Primary Author:** **ARUSHIGULBHILE** (AURALITH Team)  
-- **Repository:** `Auralith-SIH/spacekit`  
-- **GitHub:** [ARUSHIGULBHILE](https://github.com/ARUSHIGULBHILE) 
+- **Repository:** `Auralith-SIH/agspace`  
+- **GitHub:** [ARUSHIGULBHILE](https://github.com/ARUSHIGULBHILE)  
 - **Status:** Active (student project)
 
 > ✅ This README is authored and maintained by **ARUSHIGULBHILE**.  
@@ -32,7 +33,7 @@
 
 ## 📌 Overview
 
-**SpaceKit** is a modular Python toolkit designed to help beginners explore space-data workflows.  
+**AGSpace** is a modular Python toolkit designed to help beginners explore space-data workflows.  
 It provides simple functions for:
 
 - NASA APOD (Astronomy Picture of the Day)
@@ -75,12 +76,18 @@ It provides simple functions for:
 
 ## 📦 Installation
 
+> ⚠️ Note: The name `spacekit` already exists on PyPI (belongs to someone else).  
+> Install **AGSpace** from GitHub:
+
 ```bash
-pip install spacekit
+pip install git+https://github.com/Auralith-SIH/agspace.git
 ```
 
-> If you are installing locally from source:
+### For local development (contributors)
+
 ```bash
+git clone https://github.com/Auralith-SIH/agspace.git
+cd agspace
 pip install -e .
 ```
 
@@ -89,15 +96,15 @@ pip install -e .
 ## ⚡ Quick Start
 
 ```python
-import spacekit
+import agspace
 
-apod = spacekit.get_apod_safe()
+apod = agspace.get_apod_safe()
 print("APOD Title:", apod["title"])
 
-weather = spacekit.get_space_weather()
+weather = agspace.get_space_weather()
 print("Solar flares:", weather["solar_flares"])
 
-iss = spacekit.satellite_position("ISS")
+iss = agspace.satellite_position("ISS")
 print("ISS Latitude:", iss["latitude"])
 ```
 
@@ -108,7 +115,7 @@ print("ISS Latitude:", iss["latitude"])
 ### 1) Get NASA APOD
 
 ```python
-from spacekit import get_apod
+from agspace import get_apod
 
 # Uses NASA DEMO_KEY by default (rate limited)
 data = get_apod()
@@ -118,7 +125,7 @@ print(data["title"])
 ### 2) Get NASA APOD (Safe Mode)
 
 ```python
-from spacekit import get_apod_safe
+from agspace import get_apod_safe
 
 # Always returns data, even if NASA API fails
 data = get_apod_safe()
@@ -130,7 +137,7 @@ print(data["title"])
 > Status: **Simulated** output for testing/demo purposes.
 
 ```python
-from spacekit import get_space_weather
+from agspace import get_space_weather
 
 weather = get_space_weather()
 print(weather)
@@ -141,7 +148,7 @@ print(weather)
 > Status: **Simulated** output for testing/demo purposes.
 
 ```python
-from spacekit import satellite_position
+from agspace import satellite_position
 
 iss = satellite_position("ISS")
 print(iss)
@@ -161,7 +168,7 @@ Fetch NASA APOD.
 - dict: APOD payload
 
 ```python
-from spacekit import get_apod
+from agspace import get_apod
 print(get_apod(api_key="YOUR_NASA_API_KEY")["title"])
 ```
 
@@ -171,7 +178,7 @@ print(get_apod(api_key="YOUR_NASA_API_KEY")["title"])
 Always returns APOD data; falls back to demo data if NASA API fails.
 
 ```python
-from spacekit import get_apod_safe
+from agspace import get_apod_safe
 print(get_apod_safe()["title"])
 ```
 
@@ -181,7 +188,7 @@ print(get_apod_safe()["title"])
 Prototype simulated space-weather output.
 
 ```python
-from spacekit import get_space_weather
+from agspace import get_space_weather
 print(get_space_weather())
 ```
 
@@ -191,7 +198,7 @@ print(get_space_weather())
 Prototype satellite position output.
 
 ```python
-from spacekit import satellite_position
+from agspace import satellite_position
 print(satellite_position("ISS"))
 ```
 
@@ -199,8 +206,8 @@ print(satellite_position("ISS"))
 
 ## 📡 Supported APIs
 
-| Feature       | Function              | Status        | Description                      |
-|--------------|------------------------|---------------|----------------------------------|
+| Feature       | Function               | Status          | Description                      |
+|---------------|------------------------|-----------------|----------------------------------|
 | NASA APOD     | `get_apod()`           | ✅ Working     | Astronomy Picture of the Day     |
 | Safe APOD     | `get_apod_safe()`      | ✅ Working     | Demo fallback                    |
 | Space Weather | `get_space_weather()`  | 🟡 Prototype   | Simulated demo output            |
@@ -211,13 +218,14 @@ print(satellite_position("ISS"))
 ## 📁 Project Structure
 
 ```text
-spacekit/
-├── spacekit/
+agspace/
+├── agspace/
 │   ├── __init__.py
 │   ├── nasa.py
 │   └── astronomy.py
 ├── requirements.txt
 ├── setup.py
+├── tests/
 └── README.md
 ```
 
@@ -228,9 +236,9 @@ spacekit/
 ### Full Demo Script
 
 ```python
-from spacekit import get_apod_safe, get_space_weather, satellite_position
+from agspace import get_apod_safe, get_space_weather, satellite_position
 
-print("🚀 SpaceKit Demo")
+print("🚀 AGSpace Demo")
 print("APOD:", get_apod_safe()["title"])
 print("Weather:", get_space_weather()["solar_flares"])
 print("ISS:", satellite_position("ISS")["latitude"])
@@ -240,7 +248,7 @@ print("ISS:", satellite_position("ISS")["latitude"])
 
 ```python
 import time
-from spacekit import satellite_position
+from agspace import satellite_position
 
 while True:
     pos = satellite_position("ISS")
@@ -257,7 +265,7 @@ while True:
 Get your free key: https://api.nasa.gov
 
 ```python
-from spacekit import get_apod
+from agspace import get_apod
 print(get_apod(api_key="YOUR_NASA_API_KEY")["title"])
 ```
 
@@ -288,18 +296,32 @@ print(get_apod(api_key="YOUR_NASA_API_KEY")["title"])
 - NASA APOD integration
 - Safe fallback mode
 - Prototype space weather + satellite tracking utilities
+- CI workflow + smoke tests
 
 ---
 
 ## 📊 Roadmap
 
-- [x] NASA APOD API integration
-- [x] Safe fallback mode
-- [ ] Add more NASA endpoints (NEO, Mars Rover Photos, EPIC)
-- [ ] Real satellite tracking (TLE + real provider)
-- [ ] Real space-weather data integration
-- [ ] ISRO integration (public sources)
-- [ ] Visualization tools
+- [x] NASA APOD API integration (live data fetch)
+- [x] Safe fallback mode (offline/demo never breaks)
+- [x] CI workflow + basic tests (GitHub Actions)
+
+- [ ] NASA endpoints expansion:
+  - [ ] NEO (asteroid data)
+  - [ ] Mars Rover Photos
+  - [ ] EPIC (Earth imagery)
+
+- [ ] Real satellite tracking:
+  - [ ] TLE parsing + ISS real coordinates
+
+- [ ] Real space-weather:
+  - [ ] Replace simulated outputs with real data sources
+
+- [ ] Visualization tools:
+  - [ ] Simple charts / plots for outputs
+
+- [ ] ISRO integration:
+  - [ ] Add public ISRO datasets/endpoints where available
 
 ---
 
@@ -308,6 +330,7 @@ print(get_apod(api_key="YOUR_NASA_API_KEY")["title"])
 - Python 3.8+
 - Requests
 - Setuptools
+- GitHub Actions (CI)
 
 ---
 
@@ -332,7 +355,7 @@ MIT License. See [LICENSE](LICENSE).
 
 ## 📬 Contact
 
-- Issues: https://github.com/Auralith-SIH/spacekit/issues  
+- Issues: https://github.com/Auralith-SIH/agspace/issues  
 - Maintainer: **ARUSHIGULBHILE** — https://github.com/ARUSHIGULBHILE  
 
 ---
